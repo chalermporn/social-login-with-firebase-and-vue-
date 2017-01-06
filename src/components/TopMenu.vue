@@ -10,23 +10,23 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+  import firebase from 'firebase'
 
-export default {
-  data: () => ({
-    currentUser: null
-  }),
-  created () {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log('current user: ' + user)
-      this.currentUser = user
-    })
-  },
-  methods: {
-    signOut () {
-      firebase.auth().signOut()
-      this.$router.push('/')
+  export default {
+    data: () => ({
+      currentUser: null
+    }),
+    created () {
+      firebase.auth().onAuthStateChanged((user) => {
+        console.log('currentUser: ' + user)
+        this.currentUser = user
+      })
+    },
+    methods: {
+      signOut () {
+        firebase.auth().signOut()
+        this.$router.push('/')
+      }
     }
   }
-}
 </script>
