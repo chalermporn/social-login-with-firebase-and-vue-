@@ -13,9 +13,9 @@
     <div class="ui buttons">
       <div class="ui red button" @click="$emit('cancel')">Cancel</div>
       <div class="or"></div>
-      <div class="ui positive submit button">Save</div>
+      <div @click="save" class="ui positive submit button">Save</div>
     </div>
-    
+
   </form>
 </template>
 

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-// import { Auth } from './services'
+import { Auth } from './services'
 
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -22,17 +22,17 @@ const router = new VueRouter({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some((x) => x.meta.requiresAuth)) {
-//     Auth.requiresUser()
-//       .then(() => {
-//         next()
-//       }, () => {
-//         next({ path: '/signin', query: { redirect: to.fullPath } })
-//       })
-//     return
-//   }
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((x) => x.meta.requiresAuth)) {
+    Auth.requiresUser()
+      .then(() => {
+        next()
+      }, () => {
+        next({ path: '/signin', query: { redirect: to.fullPath } })
+      })
+    return
+  }
+  next()
+})
 
 export default router

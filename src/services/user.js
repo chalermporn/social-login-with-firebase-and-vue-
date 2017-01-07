@@ -14,8 +14,42 @@ const set = (id, data) => {
   .ref(`user/${id}`)
   .set(data)
 }
+const create = (data) => {
+  return firebase.database()
+  .ref(`user/${data.uid}`)
+  .set(data)
+}
+
+const createByFacebook = (data) => {
+  let profile = {
+    name: data.displayName,
+    email: data.email,
+    photoURL: data.photoURL,
+    type: 'facebook'
+  }
+
+  return firebase.database()
+  .ref(`user/${data.uid}`)
+  .set(profile)
+}
+
+const createByGooglePlus = (data) => {
+  let profile = {
+    name: data.displayName,
+    email: data.email,
+    photoURL: data.photoURL,
+    type: 'googleplus'
+  }
+
+  return firebase.database()
+  .ref(`user/${data.uid}`)
+  .set(profile)
+}
 
 export default {
   get,
-  set
+  set,
+  createByFacebook,
+  createByGooglePlus,
+  create
 }

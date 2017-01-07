@@ -25,7 +25,7 @@
     methods: {
       signOut () {
         firebase.auth().signOut()
-        this.$router.push('/')
+        this.$router.push('/signin')
       }
     }
   }
