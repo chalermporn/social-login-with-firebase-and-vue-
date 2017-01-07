@@ -1,6 +1,6 @@
-# twitty
+# Social login with firebase
 
-> This is a classword for vue.js for real world course
+> This is a classwork for vue.js for real world course
 
 ## Build Setup
 
