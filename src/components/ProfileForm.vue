@@ -1,5 +1,6 @@
 <template>
   <form class="ui form" @submit.prevent="save">
+
     <div class="field">
       <label>Name</label>
       <input v-model="name">
@@ -8,8 +9,13 @@
       <label>Description</label>
       <input v-model="description">
     </div>
-    <button class="ui submit blue button">Save</button>
-    <a class="ui submit red button" @click="$emit('cancel')">Cancel</a>
+
+    <div class="ui buttons">
+      <div class="ui red button" @click="$emit('cancel')">Cancel</div>
+      <div class="or"></div>
+      <div class="ui positive submit button">Save</div>
+    </div>
+    
   </form>
 </template>
 
