@@ -16,7 +16,9 @@
     data: () => ({
       profile: {
         name: '',
-        description: ''
+        email: '',
+        description: '',
+        phptoURL: ''
       }
     }),
     created () {

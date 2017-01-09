@@ -1,20 +1,25 @@
 <template>
   <div class="ui segment">
-    <h3 class="ui header">Profile</h3>
-    <h4>Name:</h4> {{ profile.name }}
-    <h4>Description:</h4> {{ profile.description }}
-    <br/><br/>
-    <router-link to="/profile/edit" class="ui submit green button edit-profile">Edit</router-link>
+    <profile-detail v-if="profile" :profile="profile"></profile-detail>
+    <div class="ui center aligned grid"><router-link to="/profile/edit" class="ui submit green button edit-profile">Edit</router-link></div>
+    <br>
   </div>
+  
 </template>
 
 <script>
   import { Me } from '../services'
+  import ProfileDetail from './ProfileDetail'
 
   export default {
+    components: {
+      ProfileDetail
+    },
     data: () => ({
       profile: {
         name: '',
+        email: '',
+        photoURL: '',
         description: ''
       }
     }),

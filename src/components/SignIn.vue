@@ -72,17 +72,16 @@
             .then((result) => {
               User.createByGooglePlus(result.user)
                 .then(() => {
-                  this.$router.push('/home')
+                  this.$router.push('/profile')
                 })
             })
             break
           case 'facebook':
             firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then((result) => {
-              console.dir(result.user)
               User.createByFacebook(result.user)
                 .then(() => {
-                  this.$router.push('/home')
+                  this.$router.push('/profile')
                 })
             })
             break

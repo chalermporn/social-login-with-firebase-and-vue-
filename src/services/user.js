@@ -14,6 +14,7 @@ const set = (id, data) => {
   .ref(`user/${id}`)
   .set(data)
 }
+
 const create = (data) => {
   return firebase.database()
   .ref(`user/${data.uid}`)
@@ -25,6 +26,7 @@ const createByFacebook = (data) => {
     name: data.displayName,
     email: data.email,
     photoURL: data.photoURL,
+    description: '',
     type: 'facebook'
   }
 
@@ -38,6 +40,7 @@ const createByGooglePlus = (data) => {
     name: data.displayName,
     email: data.email,
     photoURL: data.photoURL,
+    description: '',
     type: 'googleplus'
   }
 
@@ -46,10 +49,19 @@ const createByGooglePlus = (data) => {
   .set(profile)
 }
 
+const subscribe = (id, callback) => {
+  return firebase.database()
+  .ref(`user/${id}`)
+  .on('value', (snapshot) => {
+    callback(snapshot.val())
+  })
+}
+
 export default {
   get,
   set,
   createByFacebook,
   createByGooglePlus,
-  create
+  create,
+  subscribe
 }
